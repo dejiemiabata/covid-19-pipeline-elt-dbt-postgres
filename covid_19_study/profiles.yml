@@ -1,0 +1,12 @@
+covid_19_study:
+  outputs:
+    dev:
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      host: postgres
+      port: 5432
+      schema: ds
+      threads: 4
+      type: postgres
+      user: "{{ env_var('POSTGRES_USER') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
+  target: dev

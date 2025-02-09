@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_state_daily_percent_infected
+    description: "Percent of State Population infected by Covid19"
+    columns:
+      - name: state_id
+        description: "The State Id"
+        data_tests:
+          - not_null
+      - name: date
+        description: "The date timestamp at which total cases was was recorded"
+        data_tests:
+          - not_null
+      - name: cases_total
+        description: "Total number of cases"
+      - name: state_population
+        description: "Population of state"
+      - name: percent_infected
+        description: "Percent of population infected by covid"

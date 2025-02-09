@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: fct_state_daily_cases
+    description: "State and Daily Cases Details"
+    columns:
+      - name: id
+        description: "The surrogate primary key for this table, consists of date and state code"
+        data_tests:
+          - unique
+          - not_null
+      - name: state_id
+        description: "State ID"
+        data_tests:
+          - not_null
+      - name: date
+        description: "The date timestamp at which total cases was was recorded"
+        data_tests:
+          - not_null
+      - name: cases_total
+        description: "Total number of cases"

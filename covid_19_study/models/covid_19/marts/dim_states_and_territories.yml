@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_states_and_territories
+    description: "State and Territories details"
+    columns:
+      - name: name
+        description: "Name of state"
+        data_tests:
+          - unique
+          - not_null
+      - name: state_code
+        description: "State Code"
+        data_tests:
+          - unique
+          - not_null
+      - name: state_population
+        description: "Population of state"

@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: covid19_states_data
+    schema: covid19_states_data
+    database: covid_data
+    tables:
+      - name: states_and_territories
+        columns:
+          - name: state_code
+            description: "The unique key for this table"
+            data_tests:
+              - unique
+              - not_null
+      - name: daily_cases
+        columns:
+          - name: data__date
+            description: "The unique key for this table, representing a single day"
+            data_tests:
+              - unique
+              - not_null
+      - name: state_daily_cases

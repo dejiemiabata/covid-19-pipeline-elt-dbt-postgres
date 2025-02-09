@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_daily_cases
+    description: "State Daily Cases"
+    columns:
+      - name: date
+        description: "The unique identifier for this table, date at which total cases was was recorded"
+        data_tests:
+          - unique
+          - not_null
+      - name: cases_total
+        description: "Total number of cases"

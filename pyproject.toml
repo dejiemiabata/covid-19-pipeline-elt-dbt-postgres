@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "dbt-postgres-covid19"
+version = "0.1.0"
+description = "Covid-19 Data Analysis by State"
+authors = ["Deji Emiabata"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.9.0,<3.13"
+python-dotenv = "^1.0.1"
+dbt-core = "^1.9.0"
+dbt-postgres = "^1.9.0"
+dlt = {version = ">=1.4.1", extras = ["postgres"]}
+pandas = "^2.2.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+ruff = "^0.6.2"
+
+[build-system]
+requires = ["poetry-core>=1.8"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "double"
+
+indent-style = "space"

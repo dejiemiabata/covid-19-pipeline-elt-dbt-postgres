@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    env_file: ".env"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_covid_19_data:/var/lib/postgresql/data
+    networks:
+      - postgresdb
+    restart: unless-stopped
+    profiles: [postgres]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $POSTGRES_DB -U $POSTGRES_USER"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  data_pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: ".env"
+    profiles: [postgres]
+    volumes:
+      - .:/Project
+    depends_on:
+      - postgres
+    command: >
+      sh -c "poetry run python scripts/covid_data_ingestion.py &&
+             cd covid_19_study &&
+             poetry run dbt build"
+    networks:
+      - postgresdb
+
+networks:
+  postgresdb:
+    driver: bridge
+
+volumes:
+  pg_covid_19_data:
